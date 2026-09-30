@@ -1,147 +1,37 @@
 # Lab: Binary Trees – Depth and Ancestors
 
-**Lab GitHub Repo**: [Binary Tree Lab](https://github.com/learn-co-curriculum/binary-tree-lab)
+**Completed Sept 30, 2026**
 
----
 
-## Overview
+A Python implementation of two classic binary tree problems:
 
-In this lab, you'll implement two classic binary tree problems commonly seen in technical interviews and real-world applications:
+1. **Maximum Depth**: finds the number of nodes on the longest path from the root to a leaf.
+2. **Lowest Common Ancestor (BST)**: finds the deepest node that has two given nodes as descendants in a Binary Search Tree.
 
-1. **Maximum Depth of a Binary Tree**  
-   Measure how deep a binary tree goes from root to leaf.
+## Files
 
-2. **Lowest Common Ancestor of a Binary Search Tree**  
-   Given two nodes in a BST, find the node that is their lowest shared ancestor.
+- `binary_tree_lab.py`: the `TreeNode` class and both function implementations
+- `binary_tree_tests.py`: unit tests for both functions
 
-These problems will strengthen your understanding of:
+## Requirements
 
-- Tree traversal using recursion
-- Node comparison and relationships
-- Constructing and navigating binary trees
+- Python 3.x (no external packages needed)
 
----
+## How to Run
 
-## Task 1: Define the Problem
-
-### Problem 1: Maximum Depth
-
-- Implement a function that returns the maximum depth of a binary tree.
-- This involves finding the longest path from the root to any leaf.
-
-### Problem 2: Lowest Common Ancestor (BST)
-
-- Implement a function that returns the **lowest common ancestor** of two given nodes in a Binary Search Tree (BST).
-- An ancestor of a node is any node on the path from the root to that node (including the node itself).
-
----
-
-## Task 2: Determine the Design
-
-You will be working with the following files:
-
-### `binary_tree_lab.py`
-
-You will implement:
-
-- `max_depth(root: Optional[TreeNode]) -> int`
-- `lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode`
-
-The `TreeNode` class is already defined for you with `val`, `left`, and `right`.
-
-### `binary_tree_tests.py`
-
-This file contains unit tests to validate your implementations. You do not need to modify this file.
-
----
-
-## 🛠 Task 3: Develop, Test, and Refine the Code
-
-### Setup
-
-1. **Fork and Clone**
-   ```bash
-   git clone https://github.com/your-org/binary-tree-lab.git
-   cd binary-tree-lab
-
-## Open and Run
-
-Open the project in your Python-friendly IDE (such as VSCode, PyCharm, or Replit).
-
----
-
-## Implementation Details
-
-The starter code includes function definitions for `max_depth` and `lowest_common_ancestor`, each containing a `pass` statement. These placeholders indicate where you should implement your logic.
-
-### Steps to Implement
-
-#### 1. Locate the Functions
-
-- Open the `binary_tree_lab.py` file.
-- Find the `max_depth` and `lowest_common_ancestor` functions.
-
-#### 2. Understand the Objectives
-
-**`max_depth(root: Optional[TreeNode]) -> int`**
-
-- Goal: Determine the maximum depth (height) of a binary tree.
-- Definition: Depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
-
-**`lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode`**
-
-- Goal: Find the lowest common ancestor (LCA) of two nodes in a Binary Search Tree (BST).
-- Definition: The LCA is the deepest node that has both `p` and `q` as descendants (a node can be a descendant of itself).
-
-#### 3. Implement the Logic
-
-**`max_depth`**
-
-- Use a recursive approach.
-- At each node, compute the depth of the left and right subtrees.
-- Return the greater of the two, plus one.
-
-**`lowest_common_ancestor`**
-
-- Leverage the properties of a BST:
-  - If both `p` and `q` are less than the current node, recurse into the left subtree.
-  - If both are greater, recurse into the right subtree.
-  - Otherwise, the current node is the lowest common ancestor.
-
----
-
-## Run Tests
-
-To validate your code, run the test suite with:
-
-```bash
-python binary_tree_tests.py
+1. Clone the repository:
 ```
-Make sure all tests pass before submission.
+   git clone https://github.com/hanjennings1/binary-tree-lab.git
+   cd binary-tree-lab
+```
+2. Run the test suite:
+```
+   python binary_tree_tests.py
+```
+   If `python` isn't recognized, use `python3` instead.
 
-4. **Push and Merge**:
-   - Commit your work regularly.
-   - Push to your feature branch.
-   - Open a Pull Request (PR).
-   - Merge to `main` after review.
+## Approach
 
----
+**`max_depth`**: Uses recursion. An empty tree has depth 0. Otherwise, a node's depth is the deeper of its left and right subtrees, plus 1 for the node itself.
 
-## Task 4: Document and Maintain
-
-### Best Practice Documentation Steps
-
-- **Comment your logic**: Especially around recursive or loop-based behavior.
-- **Explain your thinking** in your function definitions.
-- **README**: Make sure your repo’s README includes how to run the project.
-- **Clean Up**:
-  - Remove debug prints.
-  - Ensure your `.gitignore` ignores `.pyc`, `__pycache__`, etc.
-
----
-
-## Submission
-Once your lab is complete and all tests are passing:
-
-- Push your code to GitHub.
-- Submit the link to your repo through **Canvas using CodeGrade**.
+**`lowest_common_ancestor`**: Uses the BST property (left < node < right). If both values are smaller than the current node, search left. If both are larger, search right. Otherwise the values split at this node (or one of them is this node), so it is the LCA.
