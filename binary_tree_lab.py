@@ -20,6 +20,14 @@ def max_depth(root: Optional[TreeNode]) -> int:
     return max(left_depth, right_depth) + 1
 
 
-# TODO: Implement the lowest_common_ancestor function
 def lowest_common_ancestor(root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
-    pass
+    # GO LEFT: p and q are both smaller than root
+    if p.val < root.val and q.val < root.val:
+        return lowest_common_ancestor(root.left, p, q)
+
+    # GO RIGHT: p and q are both larger than root
+    if p.val > root.val and q.val > root.val:
+        return lowest_common_ancestor(root.right, p, q)
+
+    # FOUND LCA: p and q split here (or one of them is root)
+    return root
